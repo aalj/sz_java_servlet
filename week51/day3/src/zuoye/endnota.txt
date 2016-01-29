@@ -1,0 +1,331 @@
+﻿1、调用电话拨号盘
+	对于android系统，电话的电话拨号盘的系统底层固定的我们在使用的时候只能通过隐式意图对其调用。
+	通过:实现通过intent意图，调用电话拨号器
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_CALL);//链接到系统的电话拨号盘
+		intent.setData(Uri.parse("110"));//设置拨号的号码
+		startActivity(intent);//开始一个活动
+
+	注：
+		打电话属于系统服务，使用需要相关的权限
+
+2、发送信息
+	SmsManager  信息管理者
+	SmsManager.getDefault();//得到系统的短信管理者
+	sendTextManager(收件人号码,短信中心号码,信息内容,发送成功回调关广播,接收成功回调广播);//该方法发送短信
+	例：
+		SmsManager smsManager = SmsManager.getDefault();
+		smsManager.sendTextManager("13214520703",null,"这是我的号码",null,null);
+3、存储文件
+	1）、存储在应用自带的数据文件里面
+		通过使用SharePreferences()类，android里面一个轻量级的数据存储技术，处理数据就是一个key-values
+		获取SharePreferences对象有两种方式：
+			（1）、调用Content对象的getSharePreferences()方法得到对应的对象，
+			（2）、调用Activity对象的getPreferences方法
+			区别：
+				方法（1）得到的Sharepreferences对象可以被同一应用程序下的其他组件共享
+				方法（2）得到的Sharepreferences对象只能在该Activity中使用
+		Sharepreferences的四种操作模式
+			Content.MODE_PRIVATE为默认操作模式，代表该文件是私有数据，只能被应用本身访问，在该模式下，写入的内容会覆盖原文件的内容
+			Content.MODE_APPEND该模式会检查文件是否存在，存在就往文件追加内容，否则就创建新文件
+			Content.MODE_WORLD_READABLE表示当前文件可以被其他应用读取
+			Content.MODE_WPRLD_WRITEABLE表示当前文件可以被其他应用写入
+			例：
+				存储：
+					SharePreferences sharePreferences = content.getSharePreferences("文件的名字",content.MODE_……);
+					//第一个参数表示文件保存的名字，第二个参数表示SharePreferebces的操作模式
+					Editor editor = preferences.edit();
+					//得到一个Sharepreferences的编辑对象
+					editor.putString("key1","values1");
+					editor.putString("key2","values2");
+					//设置我们存储的内容，已键值对的形式存储（key-values）;
+					editor.commit();
+					//提交当前的更改
+				提取：
+				SharePreferences sharePreferences = content.getSharepreferences("需要提取文件的名字",content.MODE_……);
+				String values1 = sharePreferences.getString("key1","如果当前键的值不存在需要返回的默认值");
+				Stirng values2 = sharePreferences.getString("key2","如果当前键的值不存在需要返回的默认值");
+
+	2）、SD卡（操作内存需要相关的权限WRITE_EXTERNAL_STORAGE(写权限)和READER_EXTERNEL_STORAGE(读权限)）
+		通过对I/O流的操作对SD卡里面的文件进行操作
+		1）、存
+			得到SD卡的根目录,使用Environment.getExternalStorageDirectory();
+			使用File file = new File(SDFilePath,"文件名.");如果没有该文件则创建一个文件，如果该文件存在则得到该文件的对象
+			对文件进行写操作,使用FileOutputStream 类对文件进行写操作
+			例：
+				String SDpath = Environment.getExternalStorageDirectory();//得到SD卡的根目录
+				File file = new File(SDpath,"文件名.");
+				FileOutputStream fo = new FileOutputStream(file);//得到输入流的的操作对象
+				String data = "";//这是需要保存的数据
+				fo.write(data.getBytes());//write是对字符操作
+				fo.flush();//清楚内存缓冲区的数据
+				fo.close();//关闭文件
+		2）、取
+			得到SD卡的根目录,使用Environment.getExtergnalStorageDirectory();
+			得到储存文件的对象 File file = new File("SD卡的路径","储存数据的文件名");
+			通过BufferedReader();对文件进行都操作
+			例：
+				String SDpath = Environment.getExternalStorageDirectory();//得到SD卡的路径
+				File file = new File(SDpath,"文件名.");
+				BufferedReader bu = new BufferedReader(new InputStreamReader(new FileInputStream(file)));//？？？？？？？？？？？？？？？？
+				String text = bu.readLine();//把得到的字符流转换成String类型字符串
+				bu.close();//关闭文件
+
+
+			
+
+
+	3）、xml文件的形式存储
+		什么是xml文件：
+			xml文档由一组使用唯一名称标识的实体组成。
+			xml文档始终以一个声明开始
+			在逻辑上，文档的组成部分包括声明，元素，字符引用和处理指令
+		xml文件的结构:
+			(1)、声明：<?xml version="1.0" encoding="UTF-8" standalone="yes"?>//其中version指的是包括的xml文件使用的标准版本 ，
+				encoding指的是使用的字符集，
+				standalone表明说明文档在该文档里面完成还是从外部引入
+					no：表示从外部引入
+					yes：表示在该文档里面完成
+			(2)、xml文档的树形结构必须有一个根元素，根元素的起始在声明下面第一行，结束必须在最后一行
+			例：
+				<setting>
+					<name1>values </name1>
+					<name2>values </name2>
+				</setting>
+			(3)、xml元素的基本结构由开始标记，数据内容，结束标记组成
+			例：
+				<person>
+					<name>张三</name>
+					<sex>女</sex>
+				</person>
+			注：
+				元素标记区分大小写
+				结束标记必须有反斜杠如：</name>
+		Java实现xml文件
+			1）、通过XmlSerializer类得到一个序列化的对象
+			例：
+				XmlSerializer serializer = Xml.Serializer();//得到一个Xml的序列化对象
+			2）、写声明
+				serializer.setDocument("utf-8",true);//等同于<?version="1.0" encoding="UTF-8" standalone="yes"?>
+			3）、写标签
+				serializer.setStartTag(null,"tagName");//开始标签
+				serializer.text("标签对应的值");
+				serializer.setEndTag(null,"tagNmae");//结束标签
+			4）、写标签的属性
+				serializer.attribute(null,"属性名","属性值")
+			5）、因为写xml文件是对文件操作所以需要使用一下东西
+				（1）、得到相应文件的路径，以及操作的权限
+				（2）、使用FileOutputStream类对文件进行写入操作;
+				（3）、使用serializer.setOutput(fos,"UTF-8");//指定输入流，以及写入的字符的字符集
+			
+
+
+			例：
+				<?version="1.0" encoding="UTF-8" standalone="yes" ?>
+				<persons>
+					<student id = "010">
+						<name>张三</name>
+						<age>20</age>
+						<sex>男</sex>
+					</student>
+				</persons>
+				
+			把上面的xml文件转化成java代码实现
+			例：
+				Xmlserializer serializer = Xml.newSerializer();//得到xml序列化的对象
+				String path = Environment.getExternalStorageDirectory();//得到SD卡的地址
+				File file = new File(path,"persons.xml");
+				FileOutputStream fos = new FileOutputStream(file);
+				serializer.setOutput(fos,"UTF-8");//指定序列化对象输出的地址和编码类型
+				//<?version="1.0" encoding= "utf-8" standalone = "yes"?>
+				serializer.startDecument("UTF-8",true);//指定声明
+				//<persons>
+				serializer.startTag(null,"persons");
+			
+				//<student id = "010">
+				serializer.startTag(null,"student");
+				serializer.attribute(null,"id","010");
+
+				//<name>张三</name>
+				serializer.startTag(null,"name");
+				serializer.text("张三");
+				serializer.endTag(null,"name");
+
+				//<age>20</age>
+				serializer.startTag(null,"age");
+				serializer.text("20");
+				serializer.endTag(null,"age");
+				
+				//<sex></sex>
+				serializer.startTag(null,"sex")
+				serializer.text("男");
+				serializer.endTag(null,"sex");
+			
+				</student>
+				serializer.endTag(null,"student");
+				</persons>
+				serializer.endTag(null,"persons");
+
+				serializer.endDecumemt();//声明结束
+			
+
+		通过java代码解析xml文件
+			1）、同样得到文件的路径
+				
+				File file = new File(Environment.getExternalStorageDirectory(),"persons.xml");
+				FileInputStream fis = new FileInputStream(file);
+
+			2）、得到xml的解析对象
+				
+				XmlPullParser parser = Xml.newPullParser(); 
+
+			3）、指定解析的文件和编码格式
+				
+				parser.serInput(fis,"utf-8");
+				String tagName = parser.getName();//得到标签的名称
+
+			4）、通过getEventType(),把所有的xml标签转化每个标签对应一个int类型的值
+				
+				int eventType = parser.getEventType();
+
+				XmlPullParser.START_DECUMENT=0;
+				XmlPullParser.END_DECUMENT=1;
+				XmlPullParser.START_TAG=2;
+				XmlPullParser.END_TAG=3;
+
+			5）、通过while()以及switch()循环把每个标签解析出来
+				
+				parser.nextText();得到相应的标签的值
+				parser.getAttributeValue();//得到标签的属性值
+
+				
+	4）、数据库
+		
+
+
+
+4、获取内存以及SD卡的状态（可用空间）内存的大小等于扇区的大小*扇区的总数
+	1）、得到内存状态的类:StatFs
+		
+		StatFs statFs = new StatFs(path.getPath());//通过getPath()把path地址字符串转换成标准的地址路径
+
+	2）、得到一个扇区的大小
+		
+		statFs.getBlockSize();  //对于内存数量应该是比较大的，所以使用long变量存放数据
+
+	3）、得到扇区总数
+		
+		statFs.getBlockCount(); //同上
+
+	4）、得到可用扇区总数
+		
+		statFs.getAvailableBlocks(); //同上
+
+	5）、通过调用Formatter.formatFileSize(this,long number);//格式化得到的数据以字节，兆等输出
+	
+	例：
+		String SDpath = Environment.getExternalStorageDirectory();//得到手机SD卡的路径
+		String dataPath = Environment.getDataStorageDirectory();//得到手机内存的路径
+		StatFs dataStatFs = new StatFS(dataPath.getPath())
+		long totalBlocks = dataStatFs.getBlockSize();//得到手机内存的扇区在总数
+		long blocksMemory = dataStatFs.getBlockCount();//得到内存扇区的大小
+		long availableMemory = dataStatFS.getAvailableBlocks();//得到可用的扇区数量
+		String memoryNumber = Formatter.formatterFileSize(this,long number);//格式化得到的数据，一内存单位显示
+
+	
+
+5、数据库
+	1）、建立数据库通过接口类SQLiteOpenHelper进行操作
+			1、通过构造函数建数据库
+			2、通过OnCreate(SQLiteDatabase db)方法建立表，通过db.execSQL("sql语句")创建表
+			3、onUpgrade(SQLiteDatabase db , int oldVersion , int newVersion)该方法目前不知道作用
+		
+	2）、对数据库进行操作
+		1）、可以通过exeSQL("sql语句")
+		2）、
+			增insert("表名",null,ContentValues value);
+			删delete("表名",String whereClause,String[] whereArgs);
+			查query(String table, String[] columns, String selection,String[] selectionArgs, String groupBy, String having,String orderBy);
+			改update("表名",ContentValues value ,String whereClause,String[] whereArgs);
+			
+			参数解释：
+				ContentValues values 类似于map集合
+					values.put("字段","字段对应的值");
+				whereClause 相当于sql语句里面条件“字段=?” 例：……where id=?;
+				whereArgs 相当于sql语句条件里面等号后面的值 数组里面顺序对应着whereClause的占位符
+				String[] columns 表示查询的字段列表
+				String selection 查询条件的字段
+				String[] selectionArgs 查询条件的值
+				String groupBy 分组条件
+				String having
+				String orderBy 排序 order by
+
+		
+
+
+
+6、ListView
+	1、ArrayAdapter
+		1）、定义适配器
+			ArrayAdapter<String> adapter = new ArrayAdapter<Stinrg>(this,adroid.R.layout.simple_list_item_1,listView里面显示的数据);
+				android.R.layout.simple_list_item_1: Listview的子条目的布局的id
+			ListView.setAdapter(adapter);//把数据加载的到listView里面
+	2、SimpleAdapter
+		SimpleAdapter simpleAdapter = new SimpleAdapter();
+		ListView.setAdapleter(simpleAdapter);//把数据加载的到listView里面
+	3、BaseAdapter
+
+
+
+
+7、内容提供者的创建和访问（android四大组件之一） 
+	1）、ContentProvider内容提供者，
+		作用：为了使其他应用程序访问本程序的内容的数据，或则修改本应用程序的数据
+	2）、ContentProvider的使用
+		新建的类继承ContentProvider类并且实现以下方法
+
+			（1）、oncreate()
+			（2）、getType(Uri uri)
+			（3）、insert(Uri uri, ContentValues values)
+			（4）、query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
+			（5）、delete(Uri uri, String selection, String[] selectionArgs)
+			（6）、update(Uri uri, ContentValues values, String selection, String[] selectionArgs)
+		在AndroidMainFest中注册相关的内容<<<<android在使用的时候都需要在AndroidMainFest.xml中注册>>>>>>
+			<provider 
+				android:name="自己定义的provider类的详细地址包名.类名"
+				android:authorities="在系统中唯一标识你的内容提供者"
+				android:writePermission="为内容提供者设置可写的权限"
+				android:readPermission="为内容提供者设置可读的权限"
+			/>
+		在内容提供者中通过Uri唯一标识我们需要访问的内容
+		Uri的定义
+		content://com.aalj30.aa11.ContentProvider.MyContentProvider/person/insert
+					定位到对应的内容提供者               表名    数据库增加方法
+		
+
+		通过UriMatcher类增加一些其他的Uri
+			private static UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);//表示没有设定匹配码的uriMatcher
+		通过addURI拼接Uri
+			uriMatcher.addRUI("content://com.aalj30.aa11.ContentProvider.MyContentProvider","person/insert",code);//code表示匹配码
+		通过uriMatcher.match(uri)可以得到对应匹配码。可以用于switch的匹配，然后执行相应的方法
+	
+
+	3）、内容访问者
+		设定相应的Uri用于指定需要使用的内容提供者
+			Uri uri = Uri.parse("content://com.itheima28.sqlitedemo.providers.PersonContentProvider/person/insert");
+		得到内容提供者访问对象
+			ContentResolver resolver = getContext().getContentResolver();
+		设置insert方法需要的到的参数（此处更数据库很像，唯一的区别就是在返回值得地方有所不同）
+			ContentValues values = new ContentValues();
+			values.put("name", "fengjie");
+			values.put("age", 90);
+		
+		uri = resolver.insert(uri, values);//访问内容提供者（对于insert需要特别注意返回值不同）？？？？？？？？？？？？？？？？？
+
+
+
+
+
+
+
+

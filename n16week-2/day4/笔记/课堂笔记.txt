@@ -1,0 +1,40 @@
+1、静态页面的：页面上的数据不变，开发技术：html+css+javascript
+2、动态页面：页面上的数据（从数据库中取出） 数据动态
+	开发技术：Servlet/JSP 三大框架
+3、netstat -aon 查看系统端口
+4.web软件开发的两种模式
+	c/s(QQ,游戏) 通过游戏客户端
+	b/s 通过浏览器访问服务器,然后服务器访问数据库,得到数据
+	
+	比较							c/s														b/s
+	客户端特点				特定界面、需要安装						浏览器、上网
+	功能实现					胖客户端											胖服务器端
+	架构							客户—数据库服务器							browser—应用服务器—数据库—三层
+													两层			
+	
+	程序类型					桌面应用											web应用
+	通信协议					特定													HTTP
+	
+	
+	
+	手动创建一个WEB应用，访问他
+		1.在tomcat的webapps创建一个目录
+			目录名(context root):first
+		2.在这个目录下,建一个JSP文件
+			index.jsp
+		3.访问:
+			http://127.0.0.1:8080/first/index.jsp
+			
+			
+		4、WEB应用程序的目录结构
+			images	图片
+			css	样式表文件
+			js	js文件
+			WEB-INF	规范定义
+				classes 类文件
+				lib	第三方的jar包
+				web.xml 是应用程序的配置文件
+					Servlet3.0中web.xml文件被相应的注解替换
+			
+			
+			

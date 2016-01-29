@@ -1,0 +1,23 @@
+Servlet是什么?
+	1).java类
+	2).类是实现了Servlet接口(接口<interface关键字  写抽象类  没有实现方法体的方法>)
+	3).在服务器端运行
+		tomcat上运行 创建servlet对象 ,调用他的方法
+	4).web应用程序的入口
+	
+	
+创建Servlet
+	1).写一个类,继承实现Servlet接口的类
+	2).告诉服务器,Servlet存在
+		(1).使用@WebServlet注解
+		(2).web.xml配置文件
+			<servlet>    定义了Servlet的名字及实现类
+				<></>
+				<display></display>
+				<servlet-name></servlet-name>Servlet类的名字
+				<servlet-class></servlet-class>实现类的名字
+			</servlet>
+			<servlet-mapping>
+				<></>
+				<url-pattern></url-patteng>定义如何访问这个servlet
+			</servlet-mapping>

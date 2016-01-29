@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+
+		<style type="text/css">
+			.mydiv {
+				margin: 0 auto;
+				border-collapse: collapse;
+				background: #eeeeee;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			#right {
+				float: right;
+			}
+			
+			#bgclor {
+				background: #efebde;
+			}
+			
+			table {
+				border-collapse: collapse;
+			}
+		</style>
+		<script type="text/javascript" src="js/add.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(e) {
+				
+				//实现全选
+				$(":input[name=all]").click(function(e) {
+					$(":input[name=item]").prop("checked", $(":input[name=all]").prop("checked"));
+				});
+				//实现删除必须选择一个学生
+				$(":input[name=del]").click(function(e){
+					var a= $(":input[name=item]:checked").size();
+					if(a<=0){
+						
+						alert("删除数目应该大于1");
+					}
+					else{
+						alert("已经删除");
+					}
+				});
+				//修改是只能选择一个学生
+				$(":input[name=edit]").click(function(e){
+					var a= $(":input[name=item]:checked").size();
+					if(a!=1){
+						
+						alert("修改只能修改修改一个");
+					}
+					else{
+						alert("已经修改");
+					}
+				});
+				
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<div>
+			
+				<div id="bgclor">
+					欢迎回来:<a>QQ</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="list.html">重新登录</a>
+					<span id="right"> 
+						<input type="submit" name="add" value="增加" />
+						<input type="submit" name="edit" value="编辑" />
+						<input type="submit" name="del" value="删除" />
+					</span>
+				</div>
+				<!--<table border="" cellspacing="" cellpadding="">
+					<tr><th>Header</th></tr>
+					<tr><td>Data</td></tr>
+				</table>-->
+				<table class="mydiv" bordercolor="#ffffff" style="table-layout: fixed;" width="100%" align="center" border="1">
+					<tr align="center" id="bgclor">
+						<th>
+							<input type="checkbox" name="all" />
+						</th>
+						<th>姓名</th>
+						<th>学号</th>
+						<th>性别</th>
+						<th>出生日期</th>
+						<th>面貌</th>
+					</tr>
+					<tr align="center">
+						<td>
+							<input type="checkbox" name="item" />
+						</td>
+						<td>s2</td>
+						<td>1003</td>
+						<td>男</td>
+						<td>1991-02-01</td>
+						<td>党员</td>
+					</tr>
+					<tr align="center">
+						<td>
+							<input type="checkbox" name="item" />
+						</td>
+						<td>4000</td>
+						<td>5000</td>
+						<td>6000</td>
+						<td>2000</td>
+						<td>3000</td>
+					</tr>
+					<tr align="center">
+						<td>
+							<input type="checkbox" name="item" />
+						</td>
+						<td>7000</td>
+						<td>8000</td>
+						<td>9000</td>
+						<td>2000</td>
+						<td>3000</td>
+					</tr>
+					<tr align="center">
+						<td>
+							<input type="checkbox" name="item" />
+						</td>
+						<td>7000</td>
+						<td>8000</td>
+						<td>9000</td>
+						<td>2000</td>
+						<td>3000</td>
+					</tr>
+					<tr align="center">
+						<td>
+							<input type="checkbox" name="item" />
+						</td>
+						<td>7000</td>
+						<td>8000</td>
+						<td>9000</td>
+						<td>2000</td>
+						<td>3000</td>
+					</tr>
+					<tr align="center">
+						<td>
+							<input type="checkbox" name="item" />
+						</td>
+						<td>7000</td>
+						<td>8000</td>
+						<td>9000</td>
+						<td>2000</td>
+						<td>3000</td>
+					</tr>
+				</table>
+				<a>首页</a><a> 下一页</a><a> 尾页</a>
+
+			
+		</div>
+	</body>
+
+</html>

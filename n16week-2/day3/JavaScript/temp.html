@@ -1,0 +1,29 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="textml; charset=utf-8" />
+<title>无标题文档</title>
+<script src="js/functionDemo.js"></script>
+<script>
+$(document).ready(function(e) {
+    $("button[name=hide]").click(function(e){
+	$("img").hide();
+	});
+	$(":button[name=show]").click(function(e){
+		$("img").show();
+		});
+});
+
+</script>
+</head>
+
+<body>
+<img src="img/001.png"/><br />
+<input type="button"  name="hide" value="隐藏" />
+<input type="button"  name="show" value="显示" />
+
+</body>
+<html>
+

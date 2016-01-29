@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="text/javascript">
+			function tijiaoForm(){
+				//获得表单对象
+				var formmy= document.getElementById("firForm");
+				//改变form的action属性.
+				formmy.action="全选.html";
+				
+				//提交表单 通过表单对象的submit方法
+				formmy.submit();
+			}
+		</script>
+	</head>
+	<body>
+<form action="index.html" method="get" id="firForm">
+	<input type="text"  /><br />
+	<input type="submit" value="提交" />
+	<input type="button" value="确定" onclick="tijiaoForm()"/>
+		
+	
+	
+	
+	
+	
+	
+	
+</form>
+	</body>
+</html>

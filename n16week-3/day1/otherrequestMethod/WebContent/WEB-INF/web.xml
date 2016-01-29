@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>otherrequestMethod</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>otherrequestMethodDemo</display-name>
+    <servlet-name>otherrequestMethodDemo</servlet-name>
+    <servlet-class>com.snail.otherrequestMethodDemo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>otherrequestMethodDemo</servlet-name>
+    <url-pattern>/requestMethod</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResponseTextServlet</display-name>
+    <servlet-name>ResponseTextServlet</servlet-name>
+    <servlet-class>com.snail.ResponseTextServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResponseTextServlet</servlet-name>
+    <url-pattern>/ResponseTextServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ImgBeowse</display-name>
+    <servlet-name>ImgBeowse</servlet-name>
+    <servlet-class>com.snail.ImgBeowse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImgBeowse</servlet-name>
+    <url-pattern>/ImgBeowse</url-pattern>
+  </servlet-mapping>
+</web-app>

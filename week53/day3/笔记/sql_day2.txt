@@ -1,0 +1,182 @@
+复习：
+1、ER模型  ==>  物理模型
+  1）1：n：一对多关联
+       两种张，一个实体一张表，
+       多方放一方的主键作为外键，表示关系
+  2）m:n 多对多的关联
+     三张表，一个实体一张表 + 关联表（。。。。。）
+      
+2、创建与删除数据库
+   create database  数据库名  character set utf8;
+   drop database 数据库名；
+
+3、创建表
+  create table 表名 (
+     列名1 数据类型  primary key auto_increment,
+     列名2 数据类型  [约束：not null,unique]
+     ............
+     表级约束
+     [constraint 外键名] foreign key(列名) references 表（列）
+  )
+  修改表结构：
+  alter table  表名
+     add 列定义
+     modify 列名
+     change 列名 新列
+     drop 列名
+  册除表:
+  drop table 表名
+  外键的定义及其含义
+  
+4、管理表中的数据（非常重要）
+  insert语句：insert into 表名（列名1，列名2，。。。）
+                         values(值1,值2，值3，。。。。)
+  update语句：update 表名 set 列名1 = 值1，列名2 = 值2,。。。。
+                where子句
+  delete语句：delete from 表名 where 子句
+==================================================================
+查询语句：select 简单  明天关联子查询（难）
+1、选择列:选择的列名写在select的后面
+  
+  列：别名   两种方法：1）在列的后面直接加别名 
+                       2) 在列的后面 as 别名
+
+  可以在列上加方法:concat
+                   lower
+  获取当前日期的年份：
+  
+  1)year方法
+  2)extract方法  extract(type from date)
+      从日期中抽取时间，
+      type:
+      second：秒   minute:分     hour：小时
+      day:天       month:月      year:年
+  3)日期与字符串转换
+      date_format(date,format)：将日期转换为字符串
+      str_to_date(str,format):  字符串转换为日期
+      %Y  表示4位的年份
+      %m：数字月份
+      %d:该月日期
+      %H：24小时
+      %h:12小时
+      %i:分
+      %S%s：秒
+
+2、选择行:
+   where子句
+  1)查年龄在18-19之间的学生
+     between  min and  max 
+  2)查CS系及IS系的学生
+    in
+  3)查课程名以 数 开头的课程
+    like 通配符：任意字符 ： %
+                 一个字符 ： _
+       select * from course where cname like '数%' 
+    查课程名中有 系 的课程
+       select * from course where cname like '%系%'
+    查询课程名中，第二个字符是 据 的哪些课程
+       select * from course where cname like '_据%';
+
+   4) 不需要先行课程的哪些课程：
+       select * from course where cpno is null;
+       is null  is not null
+   5) 查选修了课的学生(学号)
+       select distinct sno from sc;
+       distinct：去掉重复行
+
+3：排序，order by ：升序  asc (默认）
+                    降序  desc
+   学生按年龄排序：
+   select * from student order by sage;
+   先按年龄排，再按学号排
+   select * from student order by sage,sno desc;
+
+4：分页查询:SQLServer：top  (重要)
+            Oracle:三个子查询
+            MySQL: limit
+   limit start,total
+    start：从哪条记录开始取（从0开始）
+    total:取的记录个数
+分页查询：需要两个参数：
+   第一个参数是：第几页   2              n
+   第二个参数是：每页显示的记录个数  3   t
+     limit (2-1)*3  ,3
+
+5、分组函数(group 难)
+   count 个数
+   查多少个学生： select count(*) from student;
+   查多少门课程： select count(*) from course;
+   查修改课了的学生人数：
+                  select count(distinct sno) from sc;
+   查询需要先行过程的课程个数:
+                  select count(cpno) from course;
+
+   查询不需要先行过程的课程个数:
+   min,max :求最小值、最大值
+   查最小和最大的年龄:  select min(sage),max(sage) from student;
+   查最低的和最高的成绩：
+           select min(cgrade),max(cgrade) from sc
+            where sno='200215121';
+   avg：求平均值
+   sum: 求和
+    查成绩的平均分，与总分
+          select avg(cgrade),sum(cgrade) from sc;
+
+   查学号是200215121的学生的
+     最低分，最高分，平均分，总分
+      select min(cgrade) min,max(cgrade) max,
+             avg(cgrade) a,sum(cgrade) s
+      from sc
+      where sno='200215121';
+
+group by 子句
+  1)用做什么？ 分组统计
+  2）语法：注意点
+       select 只能是=group by后面的字段 + 分组函数
+
+统计每门课程的平均成绩、最低成绩、最高成绩
+  select cno,sno,avg(cgrade),min(cgrade),max(cgrade)
+  from sc
+  group by cno;
+
+统计每个学生的平均成绩、最低成绩、最高成绩：
+  select sno,avg(cgrade),min(cgrade),max(cgrade)
+  from sc
+  group by sno;
+
+          平均成绩、最低成绩、最高成绩
+    121         
+    122  
+
+统计每个学生的修课个数
+    从哪个表，按哪个统计，统计什么
+  (**)
+  select sno,count(*)
+  from sc
+  group by sno 
+  having count(*)>2
+
+查询学生选课个数大于2的学号、选课数
+
+统计每个系学生的最小年龄、最大年龄、平均年龄
+  select sdept,min(sage),max(sage),avg(sage)
+  from student
+  group by sdept;
+
+
+having   子句
+
+关联查询子查询
+
+select ...字段名（列名），  别名
+from  ... 表名
+where ... 选择行，条件
+order by ....排序，asc desc
+limit start,total  分页查询
+
+
+
+
+
+
+

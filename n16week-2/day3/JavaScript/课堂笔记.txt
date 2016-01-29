@@ -1,0 +1,14 @@
+1、js文件-提取共性的javScript的代码文件
+
+
+DOM:1)找对象   getElementById    getElementNentsName
+	2)完成对象 获得设置属性,执行方法
+	
+
+jQuery: 1)找对象 :选择器:
+		2)完成功能: 提供一些方便的方法
+		
+		选择器(类似于CSS):
+			基本:标签    id选择器("#"开头)    类选择器("."开头)
+			复合
+		

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script>
+			function setdefau(){
+				var name=document.getElementsByName("username")[0];
+				name.value="tom";
+			}
+			
+			function onlyread(){
+				var name = document.getElementsByName("username")[0];
+				
+				name.value="tom";
+				name.readOnly="true";
+				
+				
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+	用户名:<input type="text" name="username" /><br />
+	<input type="button" value="设置默认值" onclick="setdefau()"/><br />
+	<input type="button" value="设置输入框只读" onclick="onlyread()"/>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+一、JDBC基本概念：是java连接管理数据库的API，是底层的	
+	类和接口：java.sql.*
+	能在java语言中，执行SQL语句
+	Hibernate iBatis EJB(Enterprise JavaBean) ....
+	
+	接口：规范
+		使用者	接口		实现者（不同厂商的驱动程序，一致性，多样性）
+	
+	JDBC驱动程序的类型（4种）
+	
+二、JDBC API
+	DriverManager:实用工具类，获得Connection对象
+		Connection：连接的数据库
+		Statement：执行SQL语句（静态）
+		PrepareStatement：执行有"?"的SQL语句
+		CallableStatement执行存储过程
+		ResultSet：查询结果集
+		--------------------------------------------------------------
+		ResultSetMetaData
+		DatabaseMetaData
+		
+		
+三、连接数据库
+	准备：
+		服务器已开启，mysql运行正常
+		
+		驱动程序
+		
+		
+	连接数据库
+		1、创建一个新的工程jdbc
+		2、将驱动程序加到类路径里面
+		3、写一个类
+		
+		
+四、JDBC管理数据的基本流程
+	1）、获得Connection
+	2）、准备一个SQL语句（insert ，update，delete）
+	3）、获得能执行SQL语句的对象
+		Createstatement  PrepareStatement
+		
+五、三种注册驱动程序的方法
+	二种
+	Driver driver = new com.mysql.jdbc.Driver();
+	DriverManger.registerDriver(driver);
+	
+	
+	三种
+	System.setProperty("jabc.driver","com.mysql.jdbc.Driver");
+		
+		

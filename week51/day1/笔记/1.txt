@@ -1,0 +1,43 @@
+java集合(元素element)
+	1.集合特点:
+		1).与数组相比:
+			集合:元素的类型是引用类型  					元素个数可变
+			数组:元素的类型可以是基本类型也可以是引用类型      元素个数不可变
+		2).集合体系:
+			接口体系:掌握接口定义的方法
+			实现类:尽量理解不同实现类之间的差异
+		3).创建集合对象
+			Set<元素的实现类型> 变量名 = new 实现类<元素的实际类型>();
+		4).所有的集合中的接口与实现类:java.util ;包里面
+	2.集合体系
+		Collection:接口中的定义的方法(重要) 如何迭代
+			|-List:可重复 有序,有位置,有索引,重点关注与索引相关的方法(4中)
+				|-ArrayList:基于数组 适合随机存取,不适合大量插入或删除操作   线程不安全
+				|-LinkedList:链表	适合大量插入或删除操作				线程安全
+					还实现了Deque
+				|-Vector:基于数组										线程安全
+			|-Set:补课重复  无序 (Iterable,for-each)
+				|-hashSet():
+					重复:o1.equals(o2) == true;  o1与o2是重复
+					(复杂情形:
+					o1.equals(o2)==true  o1.hashCode()!=o2.hashCodeo()
+					o1.equals(o2)!=true  o1.hashCode()==o2.hashCodeo())
+					要求o1.equals(o2)==true 哪 o1.hashCode()==o2.hashCodeo()
+				|-SorteSet(接口) 给集合中的对象排序
+					|-TreeSet()
+						对象本身自己只能自带一个排序规则:自然排序
+							类实现Comparable接口中的comparaTo(Object other)
+						能自定义其他的排序规则
+							自定义一个类实现Comparator接口,定义的方法
+			|-Queue:队列:(先进--先出)
+				|-LinkedList
+				|-PriorityQueue:带优先级的队列
+			
+			
+			
+			
+			
+			
+			
+			
+			

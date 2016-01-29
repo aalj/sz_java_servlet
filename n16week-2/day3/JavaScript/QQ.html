@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<!--使用JS文件中的方法验证QQ号码-->
+		<script src="js/JSFile.js"></script>
+		<script>
+		function isQQ(){
+			
+		
+		//获得输入的QQ号码
+		var zh=document.getElementsByName("textV")[0].value;
+		if(isQQ1(zh)){
+			alert("是QQ号码");
+		}else{
+			alert("不是QQ号码");
+		}
+		}
+		
+		
+		</script>
+	</head>
+
+	<body>
+		<input type="text" name="textV" id="QQshuqu" />
+		<br />
+		<input type="button" name="zhbut" onclick="isQQ()"  value="验证号码" />
+	</body>
+
+</html>

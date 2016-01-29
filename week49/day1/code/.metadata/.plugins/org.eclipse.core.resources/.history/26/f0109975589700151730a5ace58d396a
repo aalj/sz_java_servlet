@@ -1,0 +1,35 @@
+/**
+ * Hello.java
+ * com.gem.day
+ *
+ * Function： TODO 
+ *
+ *   ver     date      		author
+ * ──────────────────────────────────
+ *   		 2015年11月30日 		view
+ *
+ * Copyright (c) 2015, TNT All Rights Reserved.
+*/
+
+package com.gem.day;
+/**
+ * ClassName:Hello
+ * Function: TODO ADD FUNCTION
+ * Reason:	 TODO ADD REASON
+ *
+ * @author   view
+ * @version  
+ * @since    Ver 1.1
+ * @Date	 2015年11月30日		下午7:48:20
+ *
+ * @see 	 
+
+ */
+public class Hello {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+

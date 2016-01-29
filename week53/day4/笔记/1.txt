@@ -1,0 +1,117 @@
+关联查询：
+	1、需要关联查询：如果查询的列名，在不同的表中
+	2、关联条件如何写：一般情况下，找两个表相同的条件
+		 select c.cname ,s.cgrade 
+		 from course c,sc s 
+		 where s.sno='200215121' and c.cno=s.cno;
+		 
+		 
+		 select y.cname,x.cname
+		 from course x,course y
+		 where x.cno=y.cpno; 
+		 
+		 
+		 
+		 select s.sname,sc.cno,sc.cgrade
+		 from student s,sc 
+		 where s.sno=sc.sno;
+		 
+		 
+		 
+		 
+		 select s.sname,sc.cgrade
+		 from student s left join sc on s.sno=sc.sno
+		 where sc.cno=2 and sc.cgrade>90
+		 
+		 
+		统计没门课程的平均分，最低分，最高分
+		
+		select c.cname ,avg(sc.cgrade),min(sc.cgrade),max(sc.cgrade)
+		from course c left join sc on c.cno=sc.cno 
+		group by sc.cno
+		
+		
+		select s.sname,c.cname ,avg(sc.cgrade),min(sc.cgrade),max(sc.cgrade)
+		from  student s,course c left join  sc on s.sno=sc.sno
+		 where s.sno=sc.sno and c.cno=sc.cno
+		 group by sc.cno;
+		 
+		 
+		 
+		 嵌套查询
+		 查询选修了课程号为2的学信息
+			1）关联查询
+				select s.* from student s,sc 
+				where s.sno=sc.sno and sc.cno=2;
+			2）子查询
+				select * from student where sno in (select sno from sc where cno=2);
+			
+		查询与刘晨早同一个系学习的学生
+		select sdept from student where sname='刘晨';
+		select * from student where sdept=(select sdept from student where sname='刘晨'); 
+		
+		查询选秀了课程名为"信息系统"的学生号和姓名
+		select student.sno,student.sname from student where sno in (select sno from sc where cno=(select cno from course where cname='信息系统')); 
+		
+		select cno from course where cname='信息系统';
+		
+		select sno from sc where cno=(select cno from course where cname='信息系统'); 
+		
+		关联查询
+			select s.sno,s.sname
+			from student s left join sc on s.sno=sc.sno left join course c on sc.cno=c.cno 
+			where c.cname='信息系统';
+		
+		查询学生平均分大于‘’平均分的所有学生
+
+		统计每个学生的平均成绩
+		select avg(sc.cgrase) from sc group by sno;
+		
+		统计总的平均分
+		select avg(sc.cgrade) from sc;
+		
+		select * from student where sno in (
+		select sno from sc group by sno having avg(sc.cgrade)> (
+		select avg(sc.cgrade) from sc))
+		
+		找出每个学生超过他选修课程平均成绩的课程号
+		select * 
+		from sc scl 
+		where scl.cgrade>(select avg(cgrade) from sc s2 where scl.sno=s2.sno  );
+		
+		查询其他系中比计算机科学某一学生年龄小的学生姓名和年龄
+		1）先获得计算机系的学生年龄
+			select sage from student where sdept='CS';
+		2）获得结果
+		select sname ,sage from student where sage<any(
+		select sage from student where sdept='CS') AND sdept<>'CS';
+		
+		
+		
+		select * from course limit 4,2;
+		select s.sno,s.sname,c.cno,c.cname,sc.degree from student s,course c,score sc where s.sno=sc.sno and c.cno=sc.cno;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

@@ -1,0 +1,42 @@
+1.线程基本概念;并发,提高性能
+	线程之间并发,线程内顺序
+Java 对线程的支持:
+		thread Runnable Object(notifyAll  wait)
+		sychronized 关键字
+		1.5之后 java.util.concurrent
+		
+		
+
+2.Thread类及其线程的创建
+	1).了解thread类
+		静态方法:currentThread   获得当前的线程对象
+				sleep()	毫秒数
+			其他实例方法:
+				getId		获得线程的id
+				getName		获得名称
+				getState	获得状态
+				getPriority 获得优先级
+				start		启动线程  调用润方法
+				run			线程体
+	2).构造方法:
+		Thread
+		Thread(String name)			创建线程是对线程名字赋值
+		Thread(Runnable)			通过接口Runnable里面的run方法
+		Thread(Runnable,String)		通过接口Runnable实现线程,同时对线程赋值
+		
+	3).创建线程  线程也是对象 (Thread类)
+		(1).创建线程的方法
+			a.写一个类,继承Thread类,重写run方法
+			b.写一个类实现Runnable接口,用Thread(Runnable对象)创建线程对象
+			c.通过Callable接口,FutureTask,Thread来创建线程
+		(2).使用Callable和Future创建线程
+			a.Callable和Runnable的区别如下:
+				a).Callable定义的方法是call,二Runnable定义的方法是run
+				b).Callable的call方法可以有返回值,二Runnable的run方法不能有返回值
+				c).Callable的call方法可以抛出异常,二Runnable的run方法不能抛出异常
+				
+			b.创建步骤
+				步骤:	1.定义一个类实现Callable接口,实现call方法,线程体,可以有返回值
+						2.以Callable对象创建FutureTask对象,futureTask实现了Runnablr接口
+						3.以FutureTask对象来创建爱你Thread对象
+			

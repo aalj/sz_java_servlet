@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style type="text/css">
+			.red{
+				font-size: 24px;
+				color: blue;
+			}
+		</style>
+		<script src="js/functionDemo.js" type="text/javascript">
+			
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(e){
+				$(":button").click(function(e){
+					//复合选择器  交
+					$("div.red").removeClass("red")
+					//并
+					$("h1,h2,h3").addClass("red");
+					
+					//后代,运算符是空格
+					
+					$("'string'")
+				});
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div >
+			HTML
+		</div>
+		<div class="red">
+			JSP
+		</div>
+		<span class="red">
+			Android
+		</span>
+		<h1>a</h1>
+		<h2>b</h2>
+		<h3>c</h3>
+<input type="button" name="" id="" value="确定" />
+	</body>
+</html>

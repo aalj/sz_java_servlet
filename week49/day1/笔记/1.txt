@@ -1,0 +1,28 @@
+1、老师
+	姓名：吴子镜
+	电话：13771703010
+	email：zjwu@gem-inno.com
+	
+	班主任:
+	鲁圣迪 13625287127
+		QQ:979065594
+
+2、实训体系
+
+基础强化
+	java 18
+	数据库 3.5
+	
+WEB开发
+	JDBC 2 
+	html、css\js 4
+	Servlet 6
+	jsp 3
+	
+android 强化
+	android技术  16
+	项目 5
+	
+android项目实战 18
+
+

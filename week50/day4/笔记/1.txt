@@ -1,0 +1,31 @@
+异常:不正常,在程序运行过程中碰到例外情况,从而改变程序的运行流程
+
+编译期异常与运行期异常的区别
+	1).含义
+	2).编译期异常是Exception的子类,不是RuntimeException
+		运行期的异常是:RuntimeException的子类
+	3).处理方式
+		编译期异常:需要程序员处理
+		运行期异常:可以由JVM直接处理
+		
+throw关键字    和   return比较
+	throw后面是一个异常对象  Throwable 
+	
+	
+如何处理抛出的异常
+	1).在方法声明中用throws向上(多个异常)异常
+		throws 异常类的类名1, 异常类的类名2
+		throws的异常类的类名与throw出的异常对象类型的关系
+	2).try-catch-finally 语句块
+		try{
+			//实现功能的代码(有可以抛出的异常,有可能不抛出异常)
+		}
+		catch(SQLException ex){
+			1.可以有对个catch
+			2.前面的catch中的异常类型 小于  后面   
+		}
+		finally{
+			一定会运行到,(关闭资源)
+		
+		}
+	

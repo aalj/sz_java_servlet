@@ -1,0 +1,88 @@
+专业术语：
+	JDK JRE JavaSE JavaEE(J2EE) JavaME
+	
+1、简介
+	java能做什么？
+		软件开发的三大方向
+	Java运行的基本原理：
+		.java==>编译==>.class
+		JVM GC
+	Java语言的的特点: 跨平台、移植性、00、线程、网路......
+
+2、搭建Java开发平台
+	安装JDK、测试 java -version
+	开发工具 Eclipse MyEclipse
+	
+	
+	
+
+JAVA程序运行机制
+	编译通过虚拟机运行 从而使得java的运行可以在任何的地方或则设备上运行
+	
+环境变量   理解三个环境变量的含义  以及如何设置
+path：os用 找命令
+CLASSPSTH： = java -cp
+	JVM ，找类
+JAVA_HOME 其他软件，如tomcat
+	JDK安装的目录
+JRE_HOME
+
+cmd 执行命令的顺序
+	现在当前目录查找当目录是否有该命令 
+	如果当前目录没有命令，则通过系统环境变量查找相应的目录下，是否有该命令
+	
+	
+	
+添加环境命令：
+	1、在系统属性里面选择“高级系统设置”---> "环境变量"----->“选择System 里面的path”
+	在path里面添加jdk相应的安装路径
+		例如：
+			C:\Program Files (x86)\Java\jdk1.8.0_60\bin
+			C:\Program Files (x86)\Java\jre1.8.0_60\bin
+			
+  或则
+	2、“新建...”--->变量名“JAVA_HOME”  变量值  C:\Program Files (x86)\Java\jdk1.8.0_60
+	   “新建...”--->变量名“JRE_HOME”  变量值  C:\Program Files (x86)\Java\jre1.8.0_60
+	   
+	   然后在path里面如下使用添加以下内容%JAVA_HOME%/bin;%JRE_HOME%/bin;
+	
+	以上为两种java环境变量的设置（推荐使用第二种，在有些软件里面使用tomcat）
+	
+	
+	
+在cmd里面更改盘符
+
+	d:  直接切换到D盘
+	dir 显示挡墙文件里面的全部内容
+	md  创建一个新的文件夹
+	
+	
+	
+3、用javac编译源代码 
+
+文件：相对路径（相对于当前工作目录），绝对路径（以d:/。。。。）
+javac -d 路径 文件名1，文件名2
+java -cp 路径 类名（跑名——简单名）
+	
+java的编译
+	在java文件的编译文件放到指定的文件目录下 javac -d bin Hello.java  (bin为编译文件的放置文件路径)
+	运行编译以后的文件 java -cp bin Hello   （bin同样为编译文件的放置位置路径）
+	-cp  java虚拟机到指定的位置找要运行的类
+	
+	
+包语句package：
+	1）、基本语法：放在类的外面  第一个可执行的语句
+	命名规范：公司域名的反写，小写，
+	功能：1、组织类，把关系密切的类归类在一起。2、区分名字相同的类
+	
+	类名：完整的类名=包名+类名
+	类名的首字母一定要大写
+	
+	运行有包语法的编译文件 java -cp bin day1\src.hello  (bin为编译文件的放置文件路径)
+	2）、源文件的文件夹=public的类名，一个源文件可以定义多个类
+		只能有一个public类
+	3）、区分大小写。语句以";"结束
+	4）、注释的语法
+	5）、在我的java源文件中，要用到其它的类的时候；
+		import语句
+  

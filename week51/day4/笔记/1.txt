@@ -1,0 +1,91 @@
+1.File:表示操作系统中的目录.与平台无关
+	new File("相对路径或绝对文件名<目录也行>")
+	一些常见方法.list()   listFiles(FileFilter file)  listFiles()   FileFilter类相当于一个过滤器
+	
+2.IO流    理解(字节流与字符流)
+	数据源:文件	网络		标准输入:System.in  键盘		输出:System.out显示器
+	流的分类
+		方向:相对程序	:输入流(input),程序从流中读数据
+				:输出流(),程序中写数据
+		数据单位:字节.字符
+		功能:节点流,处理流 (包装流)
+		
+3.java.io
+	抽象类: 重点关注:读写方法
+				字节				字符
+	输入		InputStream			Reader
+	输出		outputStream		Writer
+	
+	
+	4个文件相关的:关注对象的方法
+				字节					字符
+	输入		FileInputStream			FileReader
+	输出		FileOutputStream		FileWriter
+	
+	
+	带缓存的流  buffered
+		BufferedInputStream			BufferedReader
+		BufferedOutputStream		BufferedWriter
+		
+		如何创建这个对象：
+		增加方法
+			BufferedReader	readLine() 
+			BufferedWriter	newLine()
+	处理特征:构造方法一相应的流对象
+	
+	
+	其他处理流:PrintStream PrintWriter  
+	包装的是:OutputStream
+	提供了对应的print方法 	print
+							println
+							printf
+	
+	
+	System.in 标准的输入流 	InputStream
+	System.out 标准的输出流	PrintStream
+	
+	
+	
+	
+	RandomAccessFile 特点
+	1.不是体制中的  访问指针
+	2.提供readXxx和WriterXxx方法
+		Xxx是数据类型
+		
+		
+		
+7.读写文件的基本流程
+	1.创建相应的对象
+		会用带缓存的buffered对节点流做包装.
+	
+	2.用read方法或者writer方法读写数据
+	
+	3.关闭资源
+	
+	4.异常的处理
+		FileNotFoundException IOException (编译器异常)
+		
+		
+8.常用接口  Cloneable  Comparable  serializable
+	用到两个类  
+		ObjectOutputStream   处理流     writeObject()  序列化
+		ObjectInputStream	 处理流	 readObject()   反序列化
+	关键字: transient  不允许序列化
+	队形序列化与反序列化
+	序列化:Object---->二进制---->存在文件中或送到网络的另一端
+	反序列化:从文件中读出二进制流---->一个java对象
+	对象序列化必须实现Serializable接口
+	2).用到两个类:
+		ObjectOutputStream 处理流 writeObject()  序列化
+		ObjectInputStream 处理流  readObject()   反序列化
+		
+	3).理解transient 关键字的含义,相对的字段不序列化
+	
+	4).自定义序列化流程
+	面试题:创建对象的几种方法:new clone  Factory  mothod  反序列化  反射
+	
+	
+	
+	
+9.NIO (NEW io) 	
+	文件(硬盘)<---->内存中区域

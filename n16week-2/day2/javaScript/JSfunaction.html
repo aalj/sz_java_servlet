@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<!--<link  type="text/jscript" rel="stylesheet" href=""/>-->
+		<script>
+			//将字符穿转化为一个整数
+			
+			s="123"
+			//如果s=12.3;
+			//java.Integer.parseInt 抛出异常
+			//但是javaScript不会只会去小数前面的值
+			y=parseInt(s);
+			document.write(y);
+			document.write(typeof(y));
+			if(isNaN(y)){
+				document.write("不是数字")
+			}else{
+			}
+			
+			
+			//eval方法 字符串JS代码
+			eval("var x= 100");
+			document.write(x);
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

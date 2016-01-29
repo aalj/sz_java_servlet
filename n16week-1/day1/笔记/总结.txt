@@ -1,0 +1,29 @@
+1、数据库表的设计
+	1）建ER模型
+	2）规范化理论（范式）
+2、数据定义语言（DDL）(重要。非常熟练)
+	create (database,table,index,procedure,function,view) 名字
+	alter 修改
+	drop 删除
+	约束：主键，外键， unoque ，not null， check
+3、数据操纵语言（DML）（重要，非常熟练）
+	insert
+	update
+	delect
+4、查询语句 select
+	select  ......
+	from 表名
+	where 查询条件
+	group by 分组统计
+	having 条件
+	order by desc，asc
+	limit start，total
+	
+	关联查询：
+	1）什么时候需要，
+	2）关联条件如何写
+	3）内连接（inner join） 与左外连接（left join） 的语法区别
+	子查询
+5、索引与试图
+6、存储过程与函数（procedure function）
+	

@@ -1,0 +1,14 @@
+body{
+	background-color: #f7f7f7;
+	background-image: url(../img/c034.jpg);
+	background-repeat:no-repeat ;
+}
+p{
+	background-color: #FF0000;
+	font-size: 30px;
+}
+label{
+	/*font-size: 20px;
+	border-style: dotted;*/
+	border: 5px dotted blue;
+}

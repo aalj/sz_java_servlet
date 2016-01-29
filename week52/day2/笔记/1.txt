@@ -1,0 +1,77 @@
+obj.wait()：Thread.currentThread线程 在obj对象上等
+			等的时候，释放锁，
+			只能在同步块中使用
+obj.notiflyAll();唤醒在obj对象等待的全部线程
+
+生产者与消费者问题
+	1).传统：synchronized obj.wait()   obj.nitifyAll()
+	2).1.5 Lock Condition (await()   signalAll())
+	
+	
+	
+	
+	
+	
+===========================================================================================================
+
+网络编程(综合)
+1.类InetAddress:IP地址
+2.URLEncode  encode("字符串","编码集");编码.
+  URLDecode  decode("字符串","编码集");解码
+3.URL URLConnection HttpURLConnection 
+	HTTP协议,GET|POST方法
+	HttpURLConnection提交HTTP请求(WEB开发中)
+	理解URL:协议://IP地址:端口/资源名(重要)
+4.基于Socket编程
+	1).是一个抽象层,隐藏了TCP/IP协议细节
+	2).基于Client/Server
+	
+	服务端代码:	Socket
+		ServerSocket server = ....
+		Socket socket = server.accept();//阻塞方法
+	客户端代码:	Socket
+		Socket socket = new socket("","");
+		
+		
+		
+		Socket对象之后,传输数据
+			发送数据:socket.getOutputStream()	输出流.写
+			接收数据:socket.getInputStream   	输入流 读
+			
+			文本(字符串):
+				字节输出流----->字符输出流   PrintStream(PrintWrite)[处理流]
+					out=new PrintStream(socket.getOutputStream)
+					out.println("要发送的信息")
+					out.flush();//刷新
+					
+				字节输入流---->字符输入流(读到一行数据)--->带缓存的字符输入流
+					i = new BuffereReader(new InputStreamReader(Socket.getInputStream()));
+					String i= in.readLine();
+		
+	
+	示例:基于Socket的,命令行的,群发(服务器-多客户端)聊天工具
+		1).服务器发送一条信息
+			客户端显示
+			
+		2).客户端一发送一条消息--->server
+			Server:接收这条消息,并在控制台显示
+			
+			
+			
+===========================================================================================================
+服务器端创建DatagramSocket：
+	new DatagramSocket(int port);
+
+
+
+客户端端创建DatagramSocket：
+	new  DatagramSocket(int port,InetAddress ip);
+	发送“信”：send(“信”);
+	
+	
+
+
+
+
+
+	

@@ -1,0 +1,10 @@
+1.使用BigDecimal能避免的精度丢失的问题
+	但是在初始化BigDecimal是需要使用以下方法
+	1）.BigDecimal BigDecimal = new BigDecimal("0.5");//通过new关键子创建在构造函数里面只能传入字符串
+	2).BigDecimal BigDecimal = BigDecimal.valueof(0.2);valueof里面能放小数
+	
+	3).BigDecimal BigDecimal = new BigDecimal(0.2);//虽然这样也能通过编译及运行,但是同样会损失精度.
+	
+	
+	
+2.String .StringBuffer和 StringBuilder

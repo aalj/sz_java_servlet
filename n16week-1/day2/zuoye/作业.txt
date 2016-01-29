@@ -1,0 +1,20 @@
+1、创建一个数据库表产品（product），有如下字段：
+   id  整型，自增长，主键
+   pno  字符串，产品编号，唯一
+   name 字符串，产品名称
+   price 产品价格
+   cate: 产品分类
+
+创建ProductCRUDDemo类，分别使用Statement与PrepareStatement，
+在product表中增加、修改、删除数据，分别在如下的6个方法中完成，
+   
+   public static void statementInsertDemo();
+   public static void statementUpdateDemo();
+   public static void statementDeleteDemo();
+   public static void preparedStatementInsertDemo();
+   public static void preparedStatementUpdateDemo();
+   public static void preparedStatementDeleteDemo();
+   public static void preparedQueryDemo(); 查询所有行所有列的数据
+
+增删改的数据自定义
+

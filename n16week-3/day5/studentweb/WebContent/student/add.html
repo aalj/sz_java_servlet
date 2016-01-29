@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>新增学生信息</title>
+<link rel=stylesheet href="../css/demo.css" type="text/css">
+</head>
+<script src='../common/date/date.js'></script>
+<script>
+
+</Script>
+<body  topmargin="10" leftmargin="10"  >
+	<form name="frmAction"  method="post" action="/studentweb/AddStudent" >
+	<table width="95%" border="0" cellpadding="3" cellspacing="1" class="toolBar" align="center">
+      		<tr align=left class="colom">
+			<td colspan="2">新增学生信息</td>
+		</tr>
+		<tr class=even>
+			<td width='100' align='right' nowrap>姓名&nbsp;</td>
+			<td bgcolor='#ffffff'><input type="text" name="stuName" ><font color=#ff0000>*</font></td>
+		</tr>
+		<tr class=even>
+			<td width='100' align='right' nowrap>学号&nbsp;</td>
+			<td bgcolor='#ffffff'><input type="text" name="stuNumber" ><font color=#ff0000>*</font></td>
+		</tr>
+		<tr class=even>
+			<td width='100' align='right' nowrap>口令&nbsp;</td>
+			<td bgcolor='#ffffff'><input type="password" name="stuPassword" ><font color=#ff0000>*</font></td>
+		</tr>
+		<tr class=even>
+			<td width='100' align='right' nowrap>生日&nbsp;</td>
+			<td bgcolor='#ffffff'>
+				<input type="text" name="stuBirthday"  value="2000-01-01"  >
+				<INPUT type='button' value='选择日期'
+				onclick=javascript:document.all['stuBirthday'].value=selectDate() ></td>
+		</tr>
+		<tr class=even>
+			<td width='100' align='right' nowrap>性别&nbsp;</td>
+			<td bgcolor='#ffffff'><input type="radio" checked value="1" name="stuSex" >男
+								  <input type="radio" value="0" name="stuSex" >女
+			</td>
+		</tr>
+		<tr class=even>
+			<td width='100' align='right' nowrap>政法面貌&nbsp;</td>
+			<td bgcolor='#ffffff'>
+				<select  name="stuPolity" >
+					<option value="1">党员</option>
+					<option value="2">团员</option>
+					<option value="3">无党派</option>
+					<option value="4">其它</option>
+				</select>
+			</td>
+		</tr>
+		<tr class=even>
+			<td width='100' align='right' nowrap>简介&nbsp;</td>
+			<td bgcolor='#ffffff'><textarea cols=30 rows=5 name="stuBrief" ></textarea>
+			字符个数不多于250个
+			</td>
+		</tr>
+
+		<tr class=even>
+		   	<td  height=35 colspan="2" >
+	   			<input class="input" type="button" value="确定" onclick="javascript:check()" >
+	   			<input type="submit" value="提交"/>
+				<input class="input" type="button" value="返回" onclick="javascript:back()" >
+		   </td>
+		</tr>        
+	</table>
+	</form>
+	<iframe name='hideFrame' style="display:none"></iframe>
+</body>
+</html>

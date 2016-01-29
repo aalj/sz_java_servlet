@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script>
+			leg = 0;
+			var arr = [
+				"img/005.png",
+				"img/006.png",
+				"img/007.png",
+				"img/008.png",
+				"img/009.png",
+				"img/010.png",
+				"img/011.png",
+				"img/012.png",
+				"img/10.png"
+			];
+
+			function next() {
+				//获得img对象
+				var img = document.getElementById("img");
+				//换图片,就是环src属性
+				img.src = arr[leg];
+				leg++;
+				if (leg == arr.length) {
+					leg = 0;
+				}
+			}
+			function pri(){
+				if (leg == 0) {
+					leg = arr.length-1;
+				}
+//				document.write(leg)
+				var img = document.getElementById("img");
+				//换图片,就是环src属性
+				img.src = arr[leg];
+				leg--;
+				
+			}
+		</script>
+	</head>
+
+	<body>
+		<img src="img/001.png" id="img" width="100px" height="100px" />
+		<br />
+		<input type="button" value="上一张" id="pri" onclick="pri()" />
+		<input type="button" value="下一张" id="next" onclick="next()" />
+
+	</body>
+
+</html>

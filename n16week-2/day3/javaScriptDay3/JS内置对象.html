@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>JS 内置对象</title>
+		<script>
+			var s= 'java android javascript';
+			document.write(typeof s+"<br/>")
+//			s= new String("java");
+//			document.write(typeof s+"<br/>");
+			document.write(s.charAt(2)+"<br/>");
+			document.write(s.substring(2,9)+"<br/>");
+			arr=s.split(" ");
+			for (a in arr) {
+				document.write(arr[a]+"<br/>")
+			}
+			//日期对象  月份是用0~11表示
+			//getFullYear()得到完整的年份
+			//getMonth()得到月份 (0~11);
+			//getDay()得到星期
+			//getDate()得到日期
+			x=new Date();
+			document.write(x.getFullYear()+"<br/>");
+			document.write(x.getMonth()+1+"<br/>");
+			document.write(x.getDay()+"<br/>");
+			document.write(x.getDate()+"<br/>");
+			function clickm(){
+				alert("dinaji shijian ");
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+	<input type="button" value="提示" onclick="clickm()" />
+	</body>
+</html>

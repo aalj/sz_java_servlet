@@ -1,0 +1,60 @@
+常用类:
+	1.基本数据类型对应的封装类
+	2.Object类
+	3.BigDecimal:
+		newBigDecimal("12.3");
+		Bigdecimal.valueOf(12.3);
+	方法: = - * /
+	4.Math:数学相关的方法
+		random()随机数
+		round()四舍五入
+	5.String StringBuffer StringBuilder
+		面试题:三者之间的区别?
+		1).字符串常量池  "java"
+		2).不变性:体现在+  .substring()   .toUpperCase() 等
+			会创建新的字符串对象,原来的不变
+		3).常用方法:
+			length();toUpperCase();toLowerCase();
+			求子字符串substring();替换replaceAll()  replace()    indexOf() lastIndexOf()
+			split方法 分隔符  startsWith endsWith ....
+		创建对象的时候
+			new String("java");创建了几个对象?  两个
+			String name = new String("java");  三个对象
+			new String(byte[]);
+		
+		4).StringBuffer:append toString
+			1).String不变性,StringBuffer,StringBuilder是可变的
+			2).String,StringBuffer是线程安全的,StringBuilder是线程不安全的(快)
+			
+		6.日期类型:日期时间用毫秒:1970.1.1 00.00.00
+			java.util.Date:实体类
+			java.sql.Date:数据库
+			new Date():当前系统日期时间
+			getTime():
+			重点:字符串<---->日期
+			SimpleDateFormat sdf = new SimpleDateFormat("字符串表示的日期格式")"yyyy-MM-dd  HH:ss:mm"
+			
+			sdf.parse(String)---->Date对象
+			sdf.format(日期对象)---->字符串
+			
+			Calendar:日历
+			Calendar c = Calendar.getInstance()
+			c.setTime("表示时间的毫秒数")
+			可以通过get方法获得年 月 日 .....
+			get(参数:Calendar.静态常量)
+			
+			
+		7.Random:生成随机数
+			Random r = new Random();
+			r.nextInt(100);  //[0,100)的整数
+			r.nextDouble();  //[0,1_之间的数
+				
+			
+		8.正则表达式:
+			Pattern pattern = Pattern.compole("正则表达式的字符串");
+			Matcher m = pattern.matcher("所要匹配的字符串")
+			m.matcher();
+			字符串中与正则表达式相关的方法:
+			str.matches("正则表达式");
+			str.replaceAll("替换的正则表达式","需要替换字符串");
+		

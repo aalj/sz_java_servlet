@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script>
+			var srt = "i love java, i love android, i love serlet too";
+			
+			//定义正则表达式,
+			//两种语言格式
+			//加两个标志位: i(表示全局),g(表示全部) 
+//			var re = /love/ig;
+//			var s= srt.replace(re,'hate');
+//			document.write(s);
+			
+			//方法二\直接创建正则表达式对象
+			re = new RegExp("love","ig");
+			var s = srt.replace(re,"he");
+			document.write(s);
+			//正则表达式上面的方法
+			var t= re.test(srt);
+			document.write(t);
+			
+			
+			
+			//客户端验证：验证输入框中输入的内容是否符合格式
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

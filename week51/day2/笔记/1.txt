@@ -1,0 +1,34 @@
+Map:键--值 对的集合 ,键唯一 (不能重复) 值可以不唯一
+	熟练掌握这个借口上定义的方法	
+	put(key,value)				:将key-value 加到集合中
+	get(key)					:根据可以获得对应的值
+	熟练掌握遍历Map集合对象 :
+		方法一:获取键的集合,对集合的遍历
+			keySet
+		方法二:理解Map.Entry:键值的抽象
+			获得Map.Entry集合
+	常用的实现类及其一些特点
+		HashMap:线程不安全
+		HashTable:比较古老 线程的安全的
+		LinkedHashMap:链表   线程不安全的
+		
+	SoredtMap:Map的子接口  
+		TreeMap:
+			(对比SortedSet与TreeSet学习)
+			自然排序(Comparable)
+			自定义排序规则(Comparator)
+			
+			
+			
+	Properties :java应用中用properties文件做配置文件(也可以用xml文件)
+	配置文件中的格式:    key=value(中文乱码问题)
+	
+	
+	Collections :实用工具类,定义了一些静态方法
+			reverse shuffle sort min max  二分查找等.......
+			将线程不安全的集合包装为线程安全的集合
+			
+	
+	
+	
+	

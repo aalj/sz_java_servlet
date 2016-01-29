@@ -1,0 +1,18 @@
+﻿一、
+	1、ER模型----> 物理模型
+		1）、1：n   一对多关联
+			两张表，一个实体一张表，
+			多方放一方主键为外键，表示关系
+		2）、m:n 多对多关联
+			三张表，一个实体一张表，外加一个关联表
+			两个实体主键作为关联表的主键
+二、创建与删除数据库
+	CREATE DATABASE 数据库名 CHARACTER SET utf8;
+	DROP DATABASE 数据库名;
+三、创建表
+	CREATE TABLE 表名(
+			列名1 数据类型  PEIMARY KEY AUTO_INCREMENT,
+			列名2 数据类型  [约束:NOT NULL,UNIQUE]
+			.......
+	);
+	

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script>
+		function getmax(arr){
+			var a= 0;
+			for(i=0;i<arr.length;i++){
+				if(a<arr[i]){
+					a=arr[i];
+				}
+			}
+			return a;
+		}
+		
+		var arr = new Array();
+		function addarr(){
+			for(i = 0;i<100;i++){
+				arr[i]=Math.ceil(Math.random()*32);
+			}
+			
+		}
+		addarr();
+//		for (i = 0 ;i<100;i++) {
+//			document.write(arr[i]+"<br/>")
+//		}
+		document.write(getmax(arr));
+		
+		
+		
+		
+		</script>
+		<!--<script>
+			//全局变量:定义在函数外面的变量
+			var i = 1; //全局变量
+			//自定义函数
+			function add(x, y) {
+				//返回两个整数的和
+				return x + y;
+			}
+			document.write(add(1, 3));
+		</script>-->
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

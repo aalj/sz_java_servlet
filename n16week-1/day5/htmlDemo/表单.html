@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style>
+			.miaoshu {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h2>表单</h2>
+		<p>action : 提交给服务器的那个程序来处理
+			<br/> method: 可以取值get/post
+			<br/> name : 表单的名字</p>
+
+		<form action="G:\SuZhou_Android\n16week-1\沙宝亮 - 最初的信仰 - 2013我是歌手第一季第十一期现场.ape" method="get" name="存储">
+			<!--
+        	作者：dqliangjun@126.com
+        	时间：2016-01-08
+        	描述：输入用户名字
+        -->
+			用户名:
+			<input type="text" value="用户名" name="username" maxlength="10"  readonly="readonly"/>
+			<br /> 密码:
+			<input type="password" value="密码" name="pwd" maxlength="128" />
+			<br /> 性别:
+			<input type="radio" name="sex" value="1" checked="" />男
+			<input type="radio" value="0" name="sex" />女
+			<br/>爱好:
+			<input type="checkbox" />吃
+			<input type="checkbox" />喝
+			<input type="checkbox" />玩
+			<input type="checkbox" />乐
+			<br/>
+			<p class="miaoshu"> select表示下拉菜单
+				<br/>option表示选项</p>
+			<select>
+				<option>江苏</option>
+				<option>浙江</option>
+				<option>上海</option>
+				<option>广州</option>
+			</select>
+			<br />
+			<p class="miaoshu">cols : 表示列数</p>
+			简介:
+			<textarea rows="10" cols="100"></textarea>
+			<br />
+			<input type="hidden" name="id" value="10" />
+			<br />
+			<input type="file" name="file" />
+			<br />
+
+			<input type="submit" value="提交" />
+			<br />
+			<input type="button" value="验证" />
+			<br />
+			<input type="reset" value="重置	" />
+			<br/>
+
+		</form>
+
+	</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			function mall(){
+				var all = document.getElementById("checkall");
+				
+				
+//					alert("ok");
+					var checkall= document.getElementsByName("check");
+					for (x in checkall) {
+						
+						checkall[x].checked=all.checked;
+					}
+				
+			}
+			function num(){
+				var a =0; 
+				var aa = document.getElementsByName("check");
+				for(i=0;i<aa.length;i++){
+					if(aa[i].checked==true){
+						a++;
+					}
+				}
+				alert(a);
+			}
+		</script>
+	</head>
+
+	<body>
+		爱好:
+		<br />
+		<input type="checkbox" name="check" />吃
+		<br />
+		<input type="checkbox" name="check"/>吃1
+		<br />
+		<input type="checkbox" name="check"/>吃2
+		<br />
+		<input type="checkbox" name="check"/>吃3
+		<br />
+		<input type="checkbox" name="check"/>吃4
+		<br />
+		<input type="checkbox" name="check"/>吃5
+		<br />
+		<input type="checkbox" name="check"/>吃6
+		<br />
+		<input type="checkbox" name="check"/>吃7
+		<br />
+		<input type="checkbox" name="all" id="checkall" onclick="mall()"/>全选
+		<br />
+		<input type="button" id="getnum" onclick="num()" value="得到选中个数"/>
+	</body>
+
+</html>

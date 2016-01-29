@@ -1,0 +1,19 @@
+HTTP(HyperText Transfer Protocol   超文本传输协议):协议   
+	是TCP/IP协议的一个应用层协议
+	用于定义WEB浏览器与WEB服务器交换数据的过程和数据格式
+	协议版本:1.0(断开连接) 和 1.1() 
+请求数据格式
+请求行:
+	GET /books/java.html HTTP/1.1
+	请求方式   请求的文件路径    协议版本号
+消息头:
+	
+	
+	
+	
+	
+	GET 方法与POST方法请求的区别
+	
+	
+	
+	Servlet生命周期

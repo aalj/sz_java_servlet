@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="G:/SuZhou_Android/n16week-1/mysql-connector-java-5.1.38-bin.jar" sourcepath="F:/软件/mysql安装文件/mysql-connector-java-5.1.38.zip"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

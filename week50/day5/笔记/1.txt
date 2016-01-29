@@ -1,0 +1,3 @@
+1.set 无序,不可重复,需要使用ComparatorTo方法排序  实现类 hashSet(),treeSet()
+2.map是键值对的形式存在 实现类  HashMap和TreeMap
+3.list 有序的,可重复

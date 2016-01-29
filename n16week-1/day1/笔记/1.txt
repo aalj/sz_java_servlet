@@ -1,0 +1,267 @@
+存储过程：逻辑判断，循环，SQL语句，存在数据库中
+			业务逻辑封装
+	方法：逻辑判断，循环
+	
+	DELIMITER &&
+	CREATE PROCEDURE procedure_name ()
+	BEGIN
+		SELECT SAL 
+		FROM t_employe;
+	end&&
+	DELIMITER ;
+	
+	
+	例1，输出HelloWorld
+		delimiter //
+		
+		create procedure namess()
+		begin
+			SELECT 'holloWorde' ;
+		
+		end //
+		
+		delimiter ;
+		
+	查看和删除存储过程
+		删除 drop procedure namess;
+		查询某个库的存储过程
+			show procedure status；
+		显示存储过程的代码；
+			show create procedure 存储过程名；
+		相关的系统表
+			mysql.proc 表
+			--查看的是数据库名，存储过程名，类型(function,procedure)
+			select db,name type from mysql.proc;
+			--查询某个存储过程的创建代码
+			select body from mysql.proc where name='name';
+			
+			select * from information_schema.routines;
+			
+	存储过程带一个整数，随机生成一个整数（1-100），比较他们的大小
+		ceil（rand*100）
+		
+	delimiter //
+	--参数列表：参数：[in|out|inout]变量名 数据类型
+	--默认类型是in
+	create procedure comp(in x int)
+	begin
+		--声明（declare）一个变量，放随机生成的整数
+			declare b int default 0;
+			--生成一个1到100的整数的代码
+			--赋值语句 set
+			set b = ceil(rand()*100);
+		--输出x，和随机生成的整数；
+		select concat(x,',',b);
+	end //
+	delimiter ;
+	
+	--通过变量调用
+	--局部变量以@开头
+	set @x= 50;
+	call comp(@x); 
+	
+	
+	
+	判断传入的与随机生成的书的大小
+	delimiter //
+	create procedure comp2(in x int)
+	begin 
+		declare r int default 0;
+		set r =ceil(rand()*100);
+		--判断大小关系
+		if x=r then 
+			select '相等';
+		elseif x>r then
+			select 'x大于r';
+		else
+			select 'x<r';
+		end if;
+	 
+	end //
+	delimiter ;
+	
+	call comp2(50);
+	
+	循环语句(三种循环语句)
+	while 条件 do
+		循环体
+	end while;
+	
+	
+	
+	求1到n的和，n作为存储过程的参数传入；
+	delimiter //
+	create procedure sum2(in n int)
+	begin 
+		--求1到n的和
+		
+		--声明一个变量存放 和
+			declare s int default 0;
+		--声明一个变量，作为循环变量i
+			declare i int default 1;
+			
+			while i<=n do
+			set s = s+i;
+			set i = i+1;
+			end while ;
+			
+		--输出这个和；
+			select concat('s=',s);
+	end //
+	delimiter ;
+	call sum2(10);
+	
+	
+	
+	第二种循环方法：
+	label: loop
+		当某一个条件满足时，
+		leave label;
+	
+	end loop label;
+	
+	
+	delimiter //
+	create procedure sum1(in i int)
+	begin
+		declare a int default 1;
+		declare s int default 0;
+		
+		label: loop
+		
+		
+			if a>i then 
+			
+			leave label;
+			end if;
+			set s = s+a;
+			set a = a+1;
+			
+		end loop label;
+		select concat('s=',s);
+	end //
+	delimiter ;
+	
+	call sum1(3);
+			
+	第三种循环方式
+	
+	repeat 
+	
+	循环体
+	
+	until 条件  end repeat；
+	
+	
+	
+	例四：
+	传入学好。获得这个学生的各门课程的平均成绩
+	delimiter //
+	create procedure stuavg(ssno varchar(10),out avgs double )
+	begin
+		--SQL语句中获得的值赋给一个变量
+		--声明一个放平均值的变量
+		declare ascore double;
+		select avg(cgrade) into ascore from sc where sno =ssno;
+		set avgs=ascore;
+		select ascore;
+	end //
+	delimiter ;
+	call stuavg('200215121');
+	
+	
+	调用存储过程
+	set @avgs=0;
+	call stuavg('200215121',@avgs);
+	
+	游标：cousor
+	查：某个学生的各门课程的成绩，查询出的结果是多条记录
+		通过游标获得这些数据
+	
+	课程名 成绩
+		select c.cname ,sc.cgrade from course c,sc where c.cno=sc.cno and sc.sno='200215121';
+	
+	写一个存储过程，传入的参数是学号
+	输出这个学生学习的课程名及其成绩
+	
+	游标：查询结果集（多条记录）
+	
+	
+	
+	delimiter //
+	create procedure showstucourse(ssno varchar(10))
+	begin
+	--声明两个变量，放从游标中获取到的数据
+	--声明一个标志位
+	declare flag int default 0;
+	declare name varchar(20);
+	declare score int;
+	--1、声明游标，
+		declare stucourse_cur cursor for  
+		select c.cname ,sc.cgrade from course c,sc 
+		where c.cno=sc.cno and sc.sno=ssno;
+		--当游标中娶不到数据是flag=1;
+		declare continue handler for not found set flag=1;
+	--2、打开游标
+	open stucourse_cur;
+	--3、从游标中获取数据
+	fetch stucourse_cur into name,score;
+		while flag<>1 do
+		--显示结果
+		select concat(name,',',score);
+		--循环取数据，取下一行数据
+		fetch stucourse_cur into name,score;
+		
+	end while ;
+	--4、关闭游标
+	close stucourse_cur;
+	
+	end //
+	delimiter ;
+	
+	declare continue 
+	
+	
+	函数 function 类似于procedure 
+	有返回值，可以用在select 后面
+	创建一个函数，传一个学号，返回这个学生的各门课程成绩
+	delimiter //
+	--函数要声明返回类型：return类型
+	create function  getstuscore (ssno varchar(10)) 
+	returns double
+	begin 
+		--声明一个变量，放平均值
+		declare avgscore double;
+		select avg(cgrade) into avgscore from sc where sno = ssno;
+		return avgscore;
+	end //
+	
+	delimiter ;
+	
+	--如何调用
+	select getscore(200215121);
+	
+	
+	
+	
+	
+	作业：
+	传入一个课程号，获得这个课程的平均成绩
+	
+	
+	
+			
+			
+	范式：设计合理的数据库表 大表---->拆分为合理的小表
+	1NF、列是原子的
+	2NF、列只能由主键（主属性）
+	3NF、其他非主属性不依赖与其他的非主属性
+			
+			
+			
+			
+			
+			
+			
+			
+			

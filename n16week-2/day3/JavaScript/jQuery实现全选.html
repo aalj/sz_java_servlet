@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="js/functionDemo.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(e){
+			$(":input[name=all]").click(function(e){
+				//设置元素属性的值
+				//prop 表示属性的值,里面的参数表示键值
+				//获得全选按钮的属性
+				var c = $(":input[name=all]").prop("checked");
+				$(":input[name=favor]").prop("checked",$(":input[name=all]").prop("checked"));
+				
+			});
+			
+			
+			
+			//按钮获得选中的个数
+			$(":input[name=num]").click(function(e){
+				//找出爱好复选框中选中的哪些元素
+				var a= $(":checked[name=favor]:checked").size();
+				alert(a);
+			});
+			
+			
+			
+			
+			
+		});
+		
+		
+		
+		</script>
+	</head>
+
+	<body>
+		<input type="checkbox" name="favor" id="favor" value="" />吃
+		<input type="checkbox" name="favor" id="favor" value="" />和
+		<input type="checkbox" name="favor" id="favor" value="" />玩
+		<input type="checkbox" name="favor" id="favor" value="" />乐
+		<input type="checkbox" name="favor" id="favor" value="" />睡
+		<input type="checkbox" name="favor" id="favor" value="" />??
+		<br />
+		<input type="checkbox" name="all" id="all" value="" />全选
+		<br /><input type="button" name="num" id="num" value="统计数目" />
+		
+		
+	</body>
+
+</html>

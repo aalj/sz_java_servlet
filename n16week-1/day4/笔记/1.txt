@@ -1,0 +1,13 @@
+更改blob数据传输的大小
+set global max_allowed_packet=160000000;
+
+
+JDBC 
+	1、java <JDBC >  数据库
+		驱动程序
+	2、连接和数据库:数据库服务、数据库、表
+	四个参数：驱动程序类名、URL 、用户名、密码
+	3、最重要的方法
+		DriverMannager：
+	
+		

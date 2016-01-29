@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script>
+			function muclick(){
+				//判断输入框当中是否输入的是否是数字
+				//1.获得输入框的对像
+					//输入框=input标签 = DOM : 是一个对象
+				//2.获得id是mydiv的这个对象,操作方法.属性
+					//var s = document.getElementByid("id");
+					
+				//3.获得name是num 的对象数组
+				var obj = document.getElementsByName("num")[0];
+				//4.获得这个输入框中用户输入的值
+				var n= obj.value;
+				document.write(typeof n);
+				//isNaN表示的是数字
+				if(!isNaN(n)&&n!=null){
+				alert("输入的是数字");
+					
+				}else{
+					alert("输入的不是数字");
+				}
+				var s= document.getElementById("myid");
+				var s1= document.getElementById("mydiv");
+//				alert(document.write(s));
+				
+			}
+		</script>
+	</head>
+
+	<body>
+		请输入一个数字:
+		<input type="text" name ="num"/>
+		<br />
+		<input id="myid" type="button" value="数字验证" onclick="muclick()" />
+		<br />
+		<div id="mydiv">我的divDom</div><br />
+
+	</body>
+
+</html>

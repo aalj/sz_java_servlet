@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script src="js/functionDemo.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(document).ready(function(e) {
+				$(":button[name=hide1]").click(function(e) {
+					$("img[name=1]").hide('slow');
+				});
+				$(":button[name=show1]").click(function(e) {
+					$("img[name=1]").show(5000);
+				});
+				$(":button[name=hide2]").click(function(e) {
+					$("img[name=2]").hide();
+				});
+				$(":button[name=show2]").click(function(e) {
+					$("img[name=2]").show();
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<img name="1" src="img/001.png" />
+		<input type="button" name="hide1" id="" value="隐藏" />
+		<input type="button" name="show1" id="" value="显示" />
+		<br />
+		<img name="2" src="img/005.png" />
+		<input type="button" name="hide2" id="" value="隐藏" />
+		<input type="button" name="show2" id="" value="显示" />
+	</body>
+
+</html>

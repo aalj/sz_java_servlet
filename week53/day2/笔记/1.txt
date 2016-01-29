@@ -1,0 +1,181 @@
+Entuty（实体）-Relation 模型
+	概念模型：找出项目中的实体，需求文档，名词
+	1）、概念设计：Entity（实体）-Relatioln模型
+	找出项目中的实体
+	实体之间的关系
+	定义出每个实体的属性
+	最后用图表示，（ER图）
+
+	示例：
+		购物流程：
+			分类		商品		商家		订单		
+			用户............................
+			
+		实体与实体之间的关系
+			1-1	一对一
+			1-n 一对多
+			n-n	多对多
+		
+		实体的属性
+		
+		实体用长方形表示
+		菱形表示关系
+		圆角矩形？？？？？？
+		
+		
+		
+		
+		数据库操作关键字
+			create alter drop
+			select update insert delete
+			
+			
+			
+		常见命令：
+			SHOW DATABASES;				显示系统中的数据库
+			USE "数据库名";				使用相应的数据库
+			SHOW TABLES;					显示当前数据库里面的表。
+			DESC 表名;						显示表结构：表名：列名+数据类型
+			SELECT * FROM 表名;		查看表中的内容
+			
+			
+		其他常见命令：
+			SELECT NOW();					查看当前系统时间
+			SELECT CURRENT_DATE;	查看当前日期
+			SELECT DATABASE();		查看当前使用的数据库名
+			SELECT USER();				查看当前登录的用户
+			SHOW STATUS;					显示系统变量
+			
+			
+			
+			建库、建表、该表
+				建库：同时设置编码集
+					CREATE DATABASE 数据库名  CHARACTER SET UTF8
+				删除数据库：
+					DROP DATABASE 数据库名;
+				
+				
+				建表：
+					CREATE TABLE 表名（
+					列一定义，
+					列二定义，
+					.
+					.
+					.
+					）;	
+					
+					列的定义：列名 数据类型	[约束]
+					
+					数据类型：
+						数值：整数：int
+									浮点数：DECIMAL(10,2)
+						字符串：CHAR(10)		定长
+										VARCHAR(10)	长度可变
+						日期类型：DATE			
+											DATETIME	
+											
+					约束：
+						主键用无意义的列，类型是整数。
+						自增长  AUTO_INCREMENT
+							PRIMARY KEY 	AUTO_INCREMENT
+						
+						唯一：
+							UNIQUE
+						不空：
+							NOT NULL
+						
+						
+					删除表：
+						DROP TABLE 表名；
+						
+						
+					在表中插入一些数据
+						INSERT INTO 表名（列1，列2,.....） value(值1，值2，....);
+						INSERT INTO 表名 VALUES（值1，值2，....）；顺序按照表的默认顺序写而且必须是表的全部字段
+						
+						
+					删除表里面的数据（DELETE）
+							DELETE FROM dept WHERE id= 2;
+							
+					修改数据库里面的数据（UPDATE）
+							UPDATE 表名 SET 列名=新值，列名2=新值 where id =2；
+						
+							
+						
+					修改表结构
+						ALTER TABLE 表名
+									ADD 列的定义												-----新增列
+									MODIFY 列名		数据类型与约束				-----修改类的定义
+									CHANGGE 列名		新列的定义
+									DROP 列名
+									
+									
+									
+						-------在表中增加一个字段：salray varchar（20）
+										ALTER TABLE emp ADD salray varcher(20);
+						-------修改salray 数据类型为 decimal（10，2）；
+										ALTER	 TABLE emp MODIFY salray DECIMAL(10,2);	
+						-------修改字段名 salray----->salary
+										ALTER TABLE emp CHANGE salray salary DECIMAL(10,2);
+										
+					外键：FOREURN KEY
+						1）、外键的含义：这列的值是另一个表中主键的值
+								再设计数据表的时候，用外键进行表的关联
+						2）、创建外键的语法
+						例：
+							部门 <1:n> 员工
+							表示关系：在多方加一方的主键作为外键
+							dept(id,name);
+							emp(id,name);
+							
+							
+							dept			id				name
+												1					财务
+												2					研发
+												3					销售
+												
+												
+												
+							emp				id				name							dept_id
+												1					zhang3						2
+												2					li4								2
+												3					wang5							3
+												4					tom								3
+												5					alice							1
+							
+							
+							 CREATE TABLE EMP (id INT PRIMARY KEY auto_increment,name VARCHAR(50),dept INT REFERENCES dept(id));//列级
+							 CREATE TABLE EMP (id INT PRIMARY KEY auto_increment,
+							 name VARCHAR(50),DEPT INT,foreign key(dept_id) references dept(id));//表级约束
+							 
+							 查约束：
+							 SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_NAME='EMP'
+							 
+							 改约束的名称：
+							 create table emps (id int primary key auto_increment,name varchar(20),
+							 dept_id int,
+							 constraint emps_dept_fk foreign key(dept_id) references dept(id));
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

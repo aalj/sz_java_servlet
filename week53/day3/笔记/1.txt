@@ -1,0 +1,111 @@
+﻿把两列拼接成一列
+SELECT CONCAT(sname,sdept) FROM student;
+把两列拼接成一列，显示的时候添加冒号
+SELECT CONCAT(sname,':',sdept) FROM student;
+给某一列起别名
+SELECT name 姓名 FROM student;
+SELECT name AS 姓名 FROM student；
+把某一列小写输出
+SELECT sno,sname,ssex,lower(sdept) from student;
+获取日期里面的年份
+1）、year方法
+	SELECT YEAR(CURRENT_DATE);
+	SELECT MONTH(CURRENT_DATE);获取月份
+	SELECT DAY(CURRENT_DATE);获取日期
+2）、EXTRACT方法
+	从日期中抽取时间
+	type：
+		second：秒 minute：分 hour：小时
+		day：天	   month：月	year：年
+3）、日期与字符串转换
+	date_format(date,format);
+	str_to_date(str,format);
+	SELECT DATA_FORMAT(now(),'%Y-%m-%d');//y与Y的是有差别
+4）、查询出生年份
+	SELECT sno,sname,DATE_FORMAT(NOW(),'%Y') -sage YRAE FROM STUDENT;
+5）、运算逻辑表达式SELECT
+	> >= < <=  == !=    age > 10
+      like                name like '王%'  %代表所有字符
+      in                  age in (23,12,3) 即符合在()内的值，被列出
+      between .. and      age between 12 and 23   从12到23
+      
+      and 就是 &&
+      or  就是 ||
+
+		SELECT * FROM  student WHERE sdept IN('CS','IS');
+	课程名义数开头
+		LIKE 通配符  任意字符；%
+					一个字符  _
+	查询已数开头的
+		SELECT * FROM course where cname like '数%';
+	查询倒数第二字以系结尾的
+		SELECT  * FROM course WHERE CNAME LIKE '%系_';
+	查询不需要先行课程的哪些课程
+		SELECT * FROM course WHERE cpno IS NULL;
+		SELECT * FROM course WHERE cpno IS NOT NULL;
+		
+	查选修了课的学生（学好）
+		SELECT sno FROM sc;
+	
+	去除重复的查询结果
+		SELECT DISTINCT(sno) FROM sc；
+		
+	查询排序 order by： 升序 asc（默认）
+						降序 desc
+		SELECT * FROM student ORDER BY   sage ASC; 
+	
+	先按年龄排，再按学好排
+		SELECT * FROM student ORDER BY sage,sno DESC;
+		
+	分页查询 mysql： LIMIT start，toatal；写在左后
+		start：从那条纪录开始取（从零开始取）
+		toatal：取的纪录个数
+		
+		
+		分页查询：需要两个参数
+		第一个参数是：第几页
+		第二个参数是：每页显示的纪录个数
+		
+		
+	分组函数（group难）
+		count 个数
+			SELECT COUNT(*) FROM student;	
+		查选修的课的学生人数：
+			SELECT COUNT(DISTINCT sno) FROM sc;
+			SELECT COUNT(DISTINCT cno) FROM sc;
+			
+		查询需要先行课程的个数
+			SELECT COUNT(cpno) FROM course WHERE cpno IS NOT NULL;
+		
+		查询没有先行课程的课程数
+			SELECT COUNT(*) -COUNT(cpno) from course;
+		MIN,MAX 最小值 ，最大值
+			SELECT sname, MIN(sage),MAX(sage) FROM student;
+		
+		avg:求平均分
+		sum：求和
+			SELECT AVG(cgrade),sum(cgrade) FROM sc;
+		
+		查学好是100115121的学生的最低分，最高分，平均分，总分
+			SELECT MIN(cgrade) min ,MAX(cgrade) max, AVG(cgrade) a,SUM(cgrade) s FROM sc WHERE sno='200215121';
+		
+	GROUP BY子句
+			1）、用做什么？				分组统计
+			2）、语法：注意点
+				SELECT 只能是=GROUP BY 后面的字段+分组函数。
+				
+				SELECT cno ,count(*) FROM sc GROUP BY cno;
+		统计没门课程的平均成绩，最低成绩，最高成绩
+				SELECT cno, AVG(cgrade),MIN(cgrade),MAX(CGRADE) FROM sc GROUP BY cno;
+		统计每个学生的平均成绩，最低成绩，最高成绩
+				SELECT sno, AVG(cgrade) '平均成绩' ,MIN(cgrade) '最低成绩',MAX(cgrade) '最高成绩' FROM sc GROUP BY sno;
+		查询学生选课数目大于2的学好、选课数
+			SELECT sno,COUNT(*) FROM sc GROUP BY sno HAVING COUNT(*)>2;
+				
+		统计每一个系的最大年龄，最小年龄，平均年龄
+			SELECT sdept ,MAX(sage) '最大年龄',MIN(sage) '最小年龄',AVG(sage) '平均年龄' FROM student GROUP BY sdept;
+				
+				
+				
+				
+				

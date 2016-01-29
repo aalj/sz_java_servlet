@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="js/functionDemo.js"></script>
+		<style>
+		.red{
+			font-size: 24px;
+			color: red;
+		}
+		.blue{
+			font-size: 24px;
+			color: blue;
+		}
+		.greed{
+			font-size: 24px;
+			color: green;
+		}
+		</style>
+		<script>
+			$(document).ready(function(e){
+				//先找到按钮,定义他的点击事件
+				//找到按钮0
+				$(":button").click(function(e){
+					$("p").addClass("red");
+					//id选择器
+					$("#myid").addClass("blue")
+					//类选择器
+					$(".span").addClass("greed")
+					
+					alert($(".span").size());
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<p>JSP</p>
+		<div class="span">Servlet</div>
+		<p id="myid">android</p>
+		<span class="span">
+			jQuery
+		</span>
+		<input type="button"   value="确定" />
+		<input type="button"   value="取消" />
+	</body>
+
+</html>

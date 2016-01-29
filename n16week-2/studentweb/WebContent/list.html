@@ -1,0 +1,152 @@
+
+
+
+
+
+
+<html>
+<head>
+	<meta charset="utf-8" />
+<title>学生信息列表</title>
+<link rel=stylesheet href="../css/demo.css" type="text/css">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<script type="text/javascript">
+	function del(){
+		//客户端验证,验证是否选中学生
+
+		//确认窗口确认删除
+		alert("ok");
+		//提交表单到deleteStudents
+		var ofrom = document.getElementsByName("frmAction")[0];
+		ofrom.action="/studentweb/DeleteStudents";
+		ofrom.submit();
+		//
+	}
+</script>
+</head>
+
+
+<body topmargin="10" leftmargin="10">
+	<form name="frmAction" method="post" action="add.jsp">
+		<table width="100%" class="toolBar" id="toggleDemoTable"
+			class="tex004">
+			<tr>
+				<td>欢迎你:admin&nbsp;&nbsp;&nbsp; <a href="login.jsp">重新登录</a>
+				</td>
+				<td id="addbutton" align="right"><input type="button"
+					onclick="add()" value="增加">&nbsp;&nbsp; <input
+					type="button" onclick="edit()" value="编辑">&nbsp;&nbsp; <input
+					type="button" onclick="del()" value="删除">&nbsp;&nbsp; <input
+					type="button" onclick="query()" value="查询">&nbsp;&nbsp;</td>
+			</tr>
+		</table>
+
+		<table width="100%" border="0" cellpadding="3" cellspacing="1"
+			class="toolTable">
+			<!--此处为列标题-->
+			<tr align="center" class="colom">
+				<td><input type="checkBox" name="chkAll" onClick="selectAll()" /></td>
+				<td align='center'>姓名</td>
+				<td>学号</td>
+				<td>性别</td>
+				<td>出生日期</td>
+				<td>政治面貌</td>
+			</tr>
+
+			<tr class='even'>
+				<td align='center'><input type='checkbox' name='chkStudent'
+					value='26'>
+				<td align=center><a href='detail.jsp?id=26' title='查询学生详细信息'>admin</a></td>
+				<td align=center>admin</td>
+				<td align=center>男</td>
+				<td align=center>1990年01月01日</td>
+				<td align=center>党员</td>
+			<tr class='ood'>
+				<td align='center'><input type='checkbox' name='chkStudent'
+					value='30'>
+				<td align=center><a href='detail.jsp?id=30' title='查询学生详细信息'>s04</a></td>
+				<td align=center>s04</td>
+				<td align=center>男</td>
+				<td align=center>1990年01月01日</td>
+				<td align=center>党员</td>
+			<tr class='even'>
+				<td align='center'><input type='checkbox' name='chkStudent'
+					value='32'>
+				<td align=center><a href='detail.jsp?id=32' title='查询学生详细信息'>s06</a></td>
+				<td align=center>s06</td>
+				<td align=center>男</td>
+				<td align=center>1990年01月01日</td>
+				<td align=center>党员</td>
+			<tr class='ood'>
+				<td align='center'><input type='checkbox' name='chkStudent'
+					value='34'>
+				<td align=center><a href='detail.jsp?id=34' title='查询学生详细信息'>s08</a></td>
+				<td align=center>s08</td>
+				<td align=center>男</td>
+				<td align=center>1990年01月01日</td>
+				<td align=center>党员</td>
+			<tr class='even'>
+				<td align='center'><input type='checkbox' name='chkStudent'
+					value='35'>
+				<td align=center><a href='detail.jsp?id=35' title='查询学生详细信息'>s09</a></td>
+				<td align=center>s09</td>
+				<td align=center>男</td>
+				<td align=center>2009年02月08日</td>
+				<td align=center>党员</td>
+			<tr class='ood'>
+				<td align='center'><input type='checkbox' name='chkStudent'
+					value='36'>
+				<td align=center><a href='detail.jsp?id=36' title='查询学生详细信息'>s10</a></td>
+				<td align=center>s10</td>
+				<td align=center>男</td>
+				<td align=center>1990年01月01日</td>
+				<td align=center>党员</td>
+			<tr class='even'>
+				<td align='center'><input type='checkbox' name='chkStudent'
+					value='37'>
+				<td align=center><a href='detail.jsp?id=37' title='查询学生详细信息'>s11</a></td>
+				<td align=center>s11</td>
+				<td align=center>男</td>
+				<td align=center>1990年01月01日</td>
+				<td align=center>党员</td>
+			<tr class='ood'>
+				<td align='center'><input type='checkbox' name='chkStudent'
+					value='38'>
+				<td align=center><a href='detail.jsp?id=38' title='查询学生详细信息'>s12</a></td>
+				<td align=center>s12</td>
+				<td align=center>男</td>
+				<td align=center>1990年01月01日</td>
+				<td align=center>党员</td>
+			<tr class='even'>
+				<td align='center'><input type='checkbox' name='chkStudent'
+					value='39'>
+				<td align=center><a href='detail.jsp?id=39' title='查询学生详细信息'>s13</a></td>
+				<td align=center>s13</td>
+				<td align=center>男</td>
+				<td align=center>1990年01月01日</td>
+				<td align=center>党员</td>
+			<tr class='ood'>
+				<td align='center'><input type='checkbox' name='chkStudent'
+					value='40'>
+				<td align=center><a href='detail.jsp?id=40' title='查询学生详细信息'>s14</a></td>
+				<td align=center>s14</td>
+				<td align=center>男</td>
+				<td align=center>1990年01月01日</td>
+				<td align=center>党员</td>
+		</table>
+
+		<table width='100%' class="tex004">
+			<tr>
+				<td align='left'><a href='#' onClick='pageQuery(1)'><span>首页</span></a>
+
+
+					<a href='#' onClick="pageQuery(2)"><span>下一页</span></a> <a
+					href='#' onClick="pageQuery(4)">尾页</a></td>
+				<td align='left'>共40项&nbsp;&nbsp;4页</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

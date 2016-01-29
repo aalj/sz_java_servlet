@@ -1,0 +1,44 @@
+1.线程的状态及转换
+	join() sleep()线程计入阻塞状态
+	
+2.其他
+	1).线程的优先级   get/setPriority
+	2).join方法
+	3).守护线程setDaemon()
+
+3.线程同步：多个线程使用同一个对象
+	1).synchronized(object){//同步块}
+	2).Lock lock = new ReentrantLock();//1.5以后
+		try{
+			lock.lock();
+			//同步块
+		}
+			finally{
+			lock.unlock();
+		}
+	3).线程安全对象：多个线程使用同一个对象是安全的
+					最安全的解决方法是：累的所有方法都加synchronized()
+					
+					
+4.线程通信生产者消费者模式
+
+
+5.线程池(了解)
+	线程框架Excutor：
+		new Thread(new Runnable(){}).start();
+		1).new Runnable(){},new Callable(){} 线程要执行的任务
+			run()				call()
+		2).执行任务
+		
+		
+	接口和类
+	
+	
+	
+	
+	
+	
+线程安全的集合:
+	1).Collections.synchronizedXxx(Xxx集合):不安全的集合----->安全的
+	2).1.5提供了一些集合类,这些类就是线程安全的
+		concurrent
